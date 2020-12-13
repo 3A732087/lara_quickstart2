@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
+Route::post('/task', [TaskController::class, 'store'])->name('task.store');
+Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
